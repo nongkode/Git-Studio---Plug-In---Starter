@@ -1,0 +1,75 @@
+{
+  "name": "git-starter",
+  "displayName": "Git Starter",
+  "description": "New Repository and Clone buttons for GitStudio's empty Changes view (clone from a link on the clipboard, with branch, depth and submodule options).",
+  "version": "261013.254.0",
+  "publisher": "nongkode",
+  "license": "Apache-2.0",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "SCM Providers",
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "gitStarter.newRepo",
+        "title": "New Repository...",
+        "category": "Git Starter",
+        "icon": "$(repo-create)"
+      },
+      {
+        "command": "gitStarter.clone",
+        "title": "Clone Repository...",
+        "category": "Git Starter",
+        "icon": "$(repo-clone)"
+      }
+    ],
+    "gitstudio.actions": [
+      {
+        "id": "gitStarter.newRepo",
+        "label": "New Repo",
+        "icon": "repo-create",
+        "command": "gitStarter.newRepo",
+        "slot": "noRepo",
+        "when": [
+          "noRepo"
+        ],
+        "style": "secondary",
+        "order": 10,
+        "tooltip": "Create a Git repository in the open folder (or a folder you choose)"
+      },
+      {
+        "id": "gitStarter.clone",
+        "label": "Clone",
+        "icon": "repo-clone",
+        "command": "gitStarter.clone",
+        "slot": "noRepo",
+        "when": [
+          "noRepo",
+          "clipboardHasGitUrl"
+        ],
+        "style": "secondary",
+        "order": 11,
+        "tooltip": "Clone the repository whose link is on the clipboard"
+      }
+    ],
+    "configurationDefaults": {
+      "git.showActionButton": {
+        "commit": false,
+        "publish": false,
+        "sync": false
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nongkode/Git-Studio---Plug-In---Starter.git"
+  }
+}
