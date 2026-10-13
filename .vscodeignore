@@ -1,0 +1,5 @@
+CLAUDE.md
+tools/**
+.gitignore
+*.vsix
+node_modules/**
