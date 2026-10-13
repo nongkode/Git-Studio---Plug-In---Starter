@@ -55,5 +55,5 @@ then close and reopen open VS Code windows.
   `https://github.com/nongkode/Git-Studio---Plug-In---Starter.git`, focus the
   VS Code window of an empty folder, click Clone, try each option).
 
-Working source on the owner's PC: `Git Starter\src` in the owner's tools folder
-on the VM Desktop (pushed here by `push-plugins.bat` next to it).
+Working clone on the owner's PC: in `C:\Users\VM\Desktop\VS Code Tools\`. Work only
+there; other folders on the Desktop belong to other projects.
