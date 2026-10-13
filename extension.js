@@ -74,16 +74,18 @@ async function newRepo() {
     await vscode.commands.executeCommand('vscode.openFolder', vscode.Uri.file(dir));
   } else {
     vscode.window.showInformationMessage(`Git repository created in ${dir}.`);
-    refreshGitStudio();
+    refreshGitStudio(dir);
   }
 }
 
-function refreshGitStudio() {
+function refreshGitStudio(dir) {
   try {
     const gs = vscode.extensions.getExtension('gitstudio.gitstudio');
     if (gs && gs.isActive && gs.exports && gs.exports.actions) gs.exports.actions.refresh();
   } catch (_) { /* optional */ }
-  vscode.commands.executeCommand('git.refresh').then(undefined, () => {});
+  // Tell VS Code's Git about the new repository. (git.refresh would show
+  // "There are no available repositories" while Git has not seen it yet.)
+  if (dir) vscode.commands.executeCommand('git.openRepository', dir).then(undefined, () => {});
 }
 
 // ---------------------------------------------------------------------------
@@ -165,7 +167,7 @@ async function clone() {
       const uri = vscode.Uri.file(target);
       if (o.open === 'same') await vscode.commands.executeCommand('vscode.openFolder', uri, { forceNewWindow: false });
       else if (o.open === 'new') await vscode.commands.executeCommand('vscode.openFolder', uri, { forceNewWindow: true });
-      else if (o.open === 'add') { vscode.workspace.updateWorkspaceFolders((vscode.workspace.workspaceFolders || []).length, 0, { uri }); refreshGitStudio(); }
+      else if (o.open === 'add') { vscode.workspace.updateWorkspaceFolders((vscode.workspace.workspaceFolders || []).length, 0, { uri }); refreshGitStudio(uri.fsPath); }
     }
   });
 }

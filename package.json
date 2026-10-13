@@ -2,7 +2,7 @@
   "name": "git-starter",
   "displayName": "Git Starter",
   "description": "New Repository and Clone buttons for GitStudio's empty Changes view (clone from a link on the clipboard, with branch, depth and submodule options).",
-  "version": "261013.254.0",
+  "version": "261013.842.0",
   "publisher": "nongkode",
   "license": "Apache-2.0",
   "engines": {
