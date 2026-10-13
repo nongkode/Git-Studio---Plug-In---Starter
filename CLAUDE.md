@@ -3,7 +3,7 @@
 VS Code extension `nongkode.git-starter`: adds **New Repo** and **Clone**
 buttons to the empty ("no repository") Changes view of GitStudio, using the
 `gitstudio.actions` extension point of the GitStudio fork
-(github.com/nongkode/gitstudio, branch `sinumerik/extension-actions`).
+(github.com/nongkode/gitstudio, branch `extension-actions`).
 Public repo, Apache-2.0 (so upstream GitStudio may adopt it). Owner: Nong Kode
 (nongkode). The owner prefers short answers in Thai.
 
@@ -46,7 +46,7 @@ path to code.cmd:
 `"C:\Program Files\Microsoft VS Code\bin\code.cmd" --install-extension out\git-starter-<ver>.vsix --force`,
 then close and reopen open VS Code windows.
 
-## Status (2026-10-13)
+## Status
 
 - Tested OK on the owner's PC: New Repo button shows with no repo, creates the
   repo, view switches to the commit state. Clone hides correctly when the
@@ -55,5 +55,5 @@ then close and reopen open VS Code windows.
   `https://github.com/nongkode/Git-Studio---Plug-In---Starter.git`, focus the
   VS Code window of an empty folder, click Clone, try each option).
 
-Working source on the owner's PC: `C:\Users\VM\Desktop\0 SINUMEIRK Tools\Git Starter\src`
-(pushed here by `push-plugins.bat` next to it).
+Working source on the owner's PC: `Git Starter\src` in the owner's tools folder
+on the VM Desktop (pushed here by `push-plugins.bat` next to it).
