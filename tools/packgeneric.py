@@ -1,13 +1,13 @@
 # Builds a .vsix without npm/vsce.
 # Usage: python tools/packgeneric.py <srcdir> <outdir> <comma-separated files>
-# Stamps version yymmdd.hhmm.0 (Bangkok time) into <srcdir>/package.json,
+# Stamps version yy.mdd.hmm (Bangkok time, e.g. 26.1015.1251; no leading zeros) into <srcdir>/package.json,
 # writes extension.vsixmanifest + [Content_Types].xml, zips the listed files.
 import zipfile,os,json,sys,datetime,re
 src,outdir,files=sys.argv[1],sys.argv[2],sys.argv[3].split(',')
 outdir=os.path.abspath(outdir)
 os.chdir(src)
 now=datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None)+datetime.timedelta(hours=7)
-v=f"{now:%y%m%d}.{int(now.strftime('%H%M'))}.0"
+v=f"{int(now.strftime('%y'))}.{int(f'{now.month}{now:%d}')}.{int(f'{now.hour}{now:%M}')}"
 txt=open('package.json').read(); txt=re.sub(r'"version": "[^"]*"',f'"version": "{v}"',txt,1); open('package.json','w').write(txt)
 pk=json.load(open('package.json'))
 deps=','.join(pk.get('extensionDependencies',[]))

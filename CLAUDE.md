@@ -40,8 +40,11 @@ node tools/activation-check.js            # must print ACTIVATE_OK
 python tools/packgeneric.py . out package.json,README.md,LICENSE.txt,extension.js
 ```
 
-`packgeneric.py` stamps version `yymmdd.hhmm.0` (Bangkok time) into
-package.json and zips only the listed files. Install on Windows with the full
+`packgeneric.py` stamps version `yy.mdd.hmm` (Bangkok time, no leading zeros,
+e.g. `26.1015.1251`; same scheme as TIA Portal Tools and the GitStudio fork)
+into package.json and zips only the listed files; undo the stamp afterwards
+(`git checkout -- package.json`). A GitHub Release: tag and title = that
+version, the vsix attached. Install on Windows with the full
 path to code.cmd:
 `"C:\Program Files\Microsoft VS Code\bin\code.cmd" --install-extension out\git-starter-<ver>.vsix --force`,
 then close and reopen open VS Code windows.
